@@ -1,7 +1,8 @@
 type TodoItemType = {
   id: number,
-  checked: boolean,
-  text: string,
+  completed: boolean,
+  title: string,
+  userId?: number
 }
 
 type ModeType = 'All' | 'Active' | 'Completed';

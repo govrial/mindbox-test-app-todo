@@ -1,7 +1,7 @@
 import { useEffect, memo, useCallback, useMemo } from 'react';
 
 import { useAppDispatch, useAppList } from '../redux/hooks';
-import { getTodos, deleteTodo } from '../redux/todoThunk';
+import {getTodos, deleteTodo, deleteCompletedTodo} from '../redux/todoThunk';
 import { Footer, Header, Panel, TodoList } from '../components';
 import './App.css';
 
@@ -19,10 +19,10 @@ const App = memo(() => {
   }, [data]);
 
   const onDeleteCompletedHandler = useCallback(() => {
-    const completedList: TodoItemType[] = data.filter((todo) => todo.checked);
+    const completedList: TodoItemType[] = data.filter((todo) => !todo.completed);
     if (completedList.length < 1) return;
-    const completedIds: TodoItemType['id'][] = completedList.map((todo) => todo.id);
-    dispatch(deleteTodo(completedIds));
+      console.log(completedList)
+    dispatch(deleteCompletedTodo(completedList));
   }, [data]);
 
   return (

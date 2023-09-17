@@ -1,13 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { TodoData } from "../api/apiTodoData";
-
 const getTodos = createAsyncThunk(
   'todoSlice/getTodos',
   async () => {
     try {
-      const list = await new TodoData().getData();
-      return list;
+      return []
     } catch (error) {
       return Promise.reject('Empty');
     }
@@ -18,8 +15,7 @@ const addTodo = createAsyncThunk(
   'todoSlice/addTodo',
   async (data: TodoItemType, { rejectWithValue }) => {
     try {
-      const list = await new TodoData().addData(data);
-      return list;
+      return data;
     } catch (error) {
       return rejectWithValue('Error');
     }
@@ -30,8 +26,7 @@ const changeTodo = createAsyncThunk(
   'todoSlice/changeTodo',
   async (data: TodoItemType, { rejectWithValue }) => {
     try {
-      const list = await new TodoData().changeData(data);
-      return list;
+      return data;
     } catch (error) {
       return rejectWithValue('Error');
     }
@@ -40,14 +35,24 @@ const changeTodo = createAsyncThunk(
 
 const deleteTodo = createAsyncThunk(
   'todoSlice/deleteTodo',
-  async (id: TodoItemType['id'][], { rejectWithValue }) => {
+  async (id: number, { rejectWithValue }) => {
     try {
-      const list = await new TodoData().deleteData(id);
-      return list;
+      return id
     } catch (error) {
       return rejectWithValue("Error");
     }
   }
 );
 
-export { getTodos, addTodo, changeTodo, deleteTodo };
+const deleteCompletedTodo = createAsyncThunk(
+    'todoSlice/deleteCompletedTodo',
+    async (data: TodoItemType[], { rejectWithValue }) => {
+        try {
+            return data
+        } catch (error) {
+            return rejectWithValue("Error");
+        }
+    }
+);
+
+export { getTodos, addTodo, changeTodo, deleteTodo, deleteCompletedTodo };

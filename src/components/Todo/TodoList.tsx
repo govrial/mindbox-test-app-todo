@@ -22,9 +22,9 @@ const TodoList: FC<Props> = memo(({
         case 'All':
           return todo;
         case 'Active':
-          return !todo.checked;
+          return !todo.completed;
         case 'Completed':
-          return todo.checked;
+          return todo.completed;
       }
     });
   }, [mode, data])
@@ -35,13 +35,13 @@ const TodoList: FC<Props> = memo(({
 
   return (
     <Box display='flex' flexDirection='column' gap='20px'>
-      {modList.map(({id, text, checked}) => {
+      {modList.map(({id, title, completed}) => {
         return (
           <TodoItem
             key={id}
             id={id}
-            text={text}
-            checked={checked}
+            text={title}
+            checked={completed}
           />
         );
       })}

@@ -30,8 +30,9 @@ const TodoItem: FC<Props> = memo(({
       setIfReadOnly(true);
       const newData = {
         id,
-        checked,
-        text: inputText,
+        completed: checked,
+        title: inputText,
+          userId: 1
       };
       dispatch(changeTodo(newData));
   }
@@ -48,14 +49,15 @@ const TodoItem: FC<Props> = memo(({
     const ifChecked = !checked;
     const newData = {
       id,
-      checked: ifChecked,
-      text,
+      completed: ifChecked,
+      title: text,
+        userId: 1
     };
     dispatch(changeTodo(newData));
   }
 
   const onDeleteHandler = () => {
-    dispatch(deleteTodo([id]))
+    dispatch(deleteTodo(id))
   }
 
   return (

@@ -25,9 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"npm run dev\" \"npm run server\"",
-    "server": "json-server --watch db/db.json --port 3004",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -52,7 +50,6 @@
   },
   "devDependencies": {
     "concurrently": "^7.5.0",
-    "flush-promises": "^1.0.2",
-    "json-server": "^0.17.0"
+    "flush-promises": "^1.0.2"
   }
 }

@@ -22,8 +22,9 @@ const Panel: FC<Props> = memo(({ lastDataId }) => {
   const onAddHandler = () => {
     const newItem = {
       id: lastDataId,
-      checked: false,
-      text: value,
+      completed: false,
+      title: value,
+        userId: 1
     };
     dispatch(addTodo(newItem));
     setValue('');
