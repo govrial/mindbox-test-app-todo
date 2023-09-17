@@ -1,2 +1,8 @@
-# mindbox-test-app-todo
-test app for mindbox cm
+Install dependencies
+> npm i
+
+
+
+In the project directory, you can run:
+
+### `npm start`
